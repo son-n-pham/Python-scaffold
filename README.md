@@ -22,13 +22,6 @@ This is a project scaffold for Python
 ### Step 3: Create recommended files.
 Go to scaffold folder, then create:
   - Makefile: touch Makefile
-  - hello.py: touch hello.py
-  - requirements.txt: touch requirement.txt
-  - Create virtual environment: It is better to create the virtual environement with the same name of Github repo:
-    ```bash
-    python3 -m venv ~/.scafford
-    source ~/.scaffold/bin/activate
-    ```
   - Add the below into Makefile:
     ```
     # This is to upgrade pip and install all required packages
@@ -51,3 +44,19 @@ Go to scaffold folder, then create:
     # Run install lint and test
     all: install lint test
     ```
+  - hello.py: touch hello.py
+  - requirements.txt: touch requirement.txt
+  - Add the below into requirement.txt file
+    ```
+    pylint
+    pytest
+    click
+    black
+    pytest-cov
+    ```    
+  - Create virtual environment: It is better to create the virtual environement with the same name of Github repo:
+    ```bash
+    python3 -m venv ~/.scafford
+    source ~/.scaffold/bin/activate
+    ```
+
