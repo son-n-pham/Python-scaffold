@@ -45,6 +45,8 @@ Go to scaffold folder, then create:
     all: install lint test
     ```
   - hello.py: touch hello.py
+  - test_hello.py: touch test_hello.py
+  - Add contents of these 2 py files as in this repo.
   - requirements.txt: touch requirement.txt
   - Add the below into requirement.txt file
     ```
@@ -59,4 +61,32 @@ Go to scaffold folder, then create:
     python3 -m venv ~/.scafford
     source ~/.scaffold/bin/activate
     ```
-
+### Step 4: GitHub Actions
+- Go to GitHub repo, Actions tab.
+- Create new workflow, named main.yml with the below content. This action is run after each push.
+  ```
+  name: Python application test with Github Actions
+  on: [push]
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+	python-version: 3.8
+      - name: Install dependencies
+        run: |
+	  make install
+      - name: Lint with Pylint
+          run: |
+	  make lint
+      - name: Test with Pytest
+        run: | 
+	  make test
+      - name: Format code with Python black
+        run: |
+	  make format
+  ```
+  
